@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareNest Clinic - Women & Children Healthcare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #3f37c9;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --success: #4cc9f0;
+      --warning: #f8961e;
+      --danger: #ef233c;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-scrolled {
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+      padding: 10px 0;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    .logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .logo-text span {
+      color: var(--accent);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+      position: relative;
+    }
+    
+    .nav-links li a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-links li a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links li a i {
+      margin-left: 5px;
+      font-size: 12px;
+    }
+    
+    .nav-links li.active a {
+      color: var(--primary);
+    }
+    
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      margin-right: 15px;
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--dark);
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(135deg, rgba(116, 235, 213, 0.9), rgba(172, 182, 229, 0.9)), 
+                  url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      color: white;
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .hero-buttons .btn {
+      padding: 12px 30px;
+    }
+    
+    .btn-white {
+      background: white;
+      color: var(--primary);
+    }
+    
+    .btn-white:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 100px 0;
+      background-color: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title h2 {
+      font-size: 36px;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 30px;
+    }
+    
+    .feature-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    
+    .feature-card p {
+      color: var(--gray);
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 100px 0;
+      background-color: #f8f9fa;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-img {
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .service-card:hover .service-img img {
+      transform: scale(1.05);
+    }
+    
+    .service-content {
+      padding: 25px;
+    }
+    
+    .service-content h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    
+    .service-content p {
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+    
+    .service-features {
+      margin-bottom: 20px;
+    }
+    
+    .service-features li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      color: var(--gray);
+    }
+    
+    .service-features li i {
+      color: var(--primary);
+      margin-right: 10px;
+      font-size: 14px;
+    }
+    
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary);
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .service-link i {
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+    
+    .service-link:hover {
+      color: var(--secondary);
+    }
+    
+    .service-link:hover i {
+      transform: translateX(5px);
+    }
+    
+    /* Doctors Section */
+    .doctors {
+      padding: 100px 0;
+      background-color: white;
+    }
+    
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .doctor-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .doctor-img {
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .doctor-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .doctor-card:hover .doctor-img img {
+      transform: scale(1.05);
+    }
+    
+    .doctor-info {
+      padding: 20px;
+    }
+    
+    .doctor-info h3 {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
+    
+    .doctor-info p {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    
+    .doctor-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .doctor-social a {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      transition: all 0.3s ease;
+    }
+    
+    .doctor-social a:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* CTA Section */
+    .cta {
+      padding: 100px 0;
+      background: linear-gradient(135deg, rgba(116, 235, 213, 0.9), rgba(172, 182, 229, 0.9)), 
+                  url('https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+    }
+    
+    .cta h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+    }
+    
+    /* About Section */
+    .about {
+      padding: 100px 0;
+      background-color: white;
+    }
+    
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    
+    .about-img {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+      color: var(--gray);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 80px 0 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    
+    .footer-column h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+    }
+    
+    .footer-column p {
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+      list-style: none;
+    }
+    
+    .footer-links a {
+      color: white;
+      opacity: 0.8;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--primary);
+      padding-left: 5px;
+    }
+    
+    .footer-contact li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      list-style: none;
+    }
+    
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-bottom p {
+      opacity: 0.7;
+      font-size: 14px;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 40px;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 600px;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .hero-buttons .btn {
+        width: 100%;
+      }
+      
+      .section-title h2 {
+        font-size: 28px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        padding-top: 100px;
+      }
+      
+      .hero-content {
+        text-align: center;
+      }
+      
+      .service-card, .doctor-card {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <!-- <img src="https://via.placeholder.com/40x40" alt="CareNest Logo"> -->
+          <a href="#" class="logo-text">Care<span>Nest</span></a>
+        </div>
+        
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a></li>
+          <li><a href="#doctors" class="nav-link">Doctors</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        
+        <div class="nav-buttons">
+          <a href="#" class="btn btn-outline">Login</a>
+          <a href="booking.html" class="btn btn-primary">Book Appointment</a>
+        </div>
+        
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Compassionate Healthcare for Women & Children</h1>
+        <p>At CareNest, we provide specialized medical care with a personal touch. Our expert team is dedicated to your family's health and wellbeing.</p>
+        <div class="hero-buttons">
+          <a href="booking.html" class="btn btn-primary">Book Appointment</a>
+          <a href="#services" class="btn btn-white">Our Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Choose CareNest?</h2>
+        <p>We are committed to providing exceptional healthcare services with a focus on women and children's health.</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-md"></i>
+          </div>
+          <h3>Expert Doctors</h3>
+          <p>Our board-certified specialists have years of experience in pediatric and women's health.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>Advanced Technology</h3>
+          <p>State-of-the-art equipment for accurate diagnosis and effective treatment.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3>Compassionate Care</h3>
+          <p>We treat every patient with empathy, respect, and personalized attention.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Flexible Hours</h3>
+          <p>Extended hours and weekend appointments to accommodate your busy schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Specialized Services</h2>
+        <p>Comprehensive healthcare solutions tailored for women and children at every stage of life.</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pediatrics">
+          </div>
+          <div class="service-content">
+            <h3>Pediatric Care</h3>
+            <p>Comprehensive healthcare for your child from infancy through adolescence.</p>
+            
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Well-child visits and immunizations</li>
+              <li><i class="fas fa-check"></i> Developmental screenings</li>
+              <li><i class="fas fa-check"></i> Treatment of childhood illnesses</li>
+              <li><i class="fas fa-check"></i> Nutritional counseling</li>
+            </ul>
+            
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gynecology">
+          </div>
+          <div class="service-content">
+            <h3>Women's Health</h3>
+            <p>Expert care for women at all stages of life with compassion and understanding.</p>
+            
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Annual exams and screenings</li>
+              <li><i class="fas fa-check"></i> Prenatal and pregnancy care</li>
+              <li><i class="fas fa-check"></i> PCOS and hormonal treatments</li>
+              <li><i class="fas fa-check"></i> Menopause management</li>
+            </ul>
+            
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vaccination">
+          </div>
+          <div class="service-content">
+            <h3>Immunization</h3>
+            <p>Complete vaccination services for children and adults following CDC guidelines.</p>
+            
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Routine childhood vaccines</li>
+              <li><i class="fas fa-check"></i> Travel vaccinations</li>
+              <li><i class="fas fa-check"></i> Flu shots and boosters</li>
+              <li><i class="fas fa-check"></i> Vaccine counseling</li>
+            </ul>
+            
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors Section -->
+  <section class="doctors" id="doctors">
+    <div class="container">
+      <div class="section-title">
+        <h2>Meet Our Specialists</h2>
+        <p>Our team of experienced healthcare professionals is dedicated to providing exceptional care.</p>
+      </div>
+      
+      <div class="doctors-grid">
+        <div class="doctor-card">
+          <div class="doctor-img">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dr. Amanda Smith">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Amanda Smith</h3>
+            <p>Pediatrician</p>
+            <div class="doctor-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <div class="doctor-img">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dr. Kevin Lee">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Kevin Lee</h3>
+            <p>Pediatric Specialist</p>
+            <div class="doctor-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <div class="doctor-img">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dr. Priya Mehta">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Priya Mehta</h3>
+            <p>OB-GYN Specialist</p>
+            <div class="doctor-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <div class="doctor-img">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dr. Sara Ahmed">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Sara Ahmed</h3>
+            <p>Women's Health</p>
+            <div class="doctor-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="About CareNest">
+        </div>
+        <div class="about-text">
+          <h2>About CareNest Clinic</h2>
+          <p>CareNest is a premier healthcare provider specializing in women and children's health services. Founded in 2010, we have been serving our community with compassion and excellence for over a decade.</p>
+          <p>Our team of board-certified physicians and healthcare professionals are dedicated to providing personalized, evidence-based care in a warm and welcoming environment.</p>
+          <p>We believe in treating the whole person, not just the symptoms, and we work closely with our patients to develop comprehensive care plans tailored to their unique needs.</p>
+          <a href="#" class="btn btn-primary">Learn More About Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Schedule Your Appointment?</h2>
+      <p>Our team is here to provide you with exceptional healthcare services tailored to your needs.</p>
+      <a href="booking.html" class="btn btn-primary">Book Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About CareNest</h3>
+          <p>CareNest is a specialized healthcare provider focusing on women and children's health with compassion and expertise.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="#">Pediatric Care</a></li>
+            <li><a href="#">Women's Health</a></li>
+            <li><a href="#">Immunization</a></li>
+            <li><a href="#">Nutrition Counseling</a></li>
+            <li><a href="#">Wellness Exams</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Healthcare Ave, Medical City, MC 12345</span>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <span>(123) 456-7890</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>info@carenest.com</span>
+            </li>
+            <li>
+              <i class="fas fa-clock"></i>
+              <span>Mon-Fri: 8:00 AM - 7:00 PM<br>Sat: 9:00 AM - 3:00 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 CareNest Clinic. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 100) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+      
+      // Update active nav link
+      updateActiveNavLink();
+    });
+    
+    // Mobile menu toggle (would need more JavaScript for full functionality)
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      // This would toggle a mobile menu in a real implementation
+      console.log('Mobile menu clicked');
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Function to update active nav link
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let currentSection = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.scrollY >= sectionTop - 200) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+    
+    // Initialize active nav link
+    updateActiveNavLink();
+  </script>
+</body>
+</html>
