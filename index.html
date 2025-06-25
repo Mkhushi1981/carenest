@@ -1,1061 +1,2477 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CareNest Clinic - Women & Children Healthcare</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    :root {
-      --primary: #4361ee;
-      --primary-dark: #3a56d4;
-      --secondary: #3f37c9;
-      --accent: #f72585;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --gray: #6c757d;
-      --light-gray: #e9ecef;
-      --success: #4cc9f0;
-      --warning: #f8961e;
-      --danger: #ef233c;
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Header & Navigation */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      transition: all 0.3s ease;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .header-scrolled {
-      background-color: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
-      padding: 10px 0;
-    }
-    
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-    
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    
-    .logo-text {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-    }
-    
-    .logo-text span {
-      color: var(--accent);
-    }
-    
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
-    
-    .nav-links li {
-      margin-left: 30px;
-      position: relative;
-    }
-    
-    .nav-links li a {
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 16px;
-      transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
-    }
-    
-    .nav-links li a:hover {
-      color: var(--primary);
-    }
-    
-    .nav-links li a i {
-      margin-left: 5px;
-      font-size: 12px;
-    }
-    
-    .nav-links li.active a {
-      color: var(--primary);
-    }
-    
-    .nav-buttons {
-      display: flex;
-      align-items: center;
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 10px 25px;
-      border-radius: 8px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    
-    .btn-outline {
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      background: transparent;
-      margin-right: 15px;
-    }
-    
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-    
-    .btn-primary {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--dark);
-      cursor: pointer;
-    }
-    
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      min-height: 700px;
-      background: linear-gradient(135deg, rgba(116, 235, 213, 0.9), rgba(172, 182, 229, 0.9)), 
-                  url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-      display: flex;
-      align-items: center;
-      color: white;
-      padding-top: 80px;
-    }
-    
-    .hero-content {
-      max-width: 600px;
-    }
-    
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
-    
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-      opacity: 0.9;
-    }
-    
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-    }
-    
-    .hero-buttons .btn {
-      padding: 12px 30px;
-    }
-    
-    .btn-white {
-      background: white;
-      color: var(--primary);
-    }
-    
-    .btn-white:hover {
-      background: rgba(255, 255, 255, 0.9);
-      transform: translateY(-2px);
-    }
-    
-    /* Features Section */
-    .features {
-      padding: 100px 0;
-      background-color: white;
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    
-    .section-title h2 {
-      font-size: 36px;
-      color: var(--dark);
-      margin-bottom: 15px;
-    }
-    
-    .section-title p {
-      color: var(--gray);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    
-    .feature-card {
-      background: white;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .feature-icon {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      color: white;
-      font-size: 30px;
-    }
-    
-    .feature-card h3 {
-      font-size: 22px;
-      margin-bottom: 15px;
-      color: var(--dark);
-    }
-    
-    .feature-card p {
-      color: var(--gray);
-    }
-    
-    /* Services Section */
-    .services {
-      padding: 100px 0;
-      background-color: #f8f9fa;
-    }
-    
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-    }
-    
-    .service-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .service-img {
-      height: 220px;
-      overflow: hidden;
-    }
-    
-    .service-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .service-card:hover .service-img img {
-      transform: scale(1.05);
-    }
-    
-    .service-content {
-      padding: 25px;
-    }
-    
-    .service-content h3 {
-      font-size: 22px;
-      margin-bottom: 15px;
-      color: var(--dark);
-    }
-    
-    .service-content p {
-      color: var(--gray);
-      margin-bottom: 20px;
-    }
-    
-    .service-features {
-      margin-bottom: 20px;
-    }
-    
-    .service-features li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      color: var(--gray);
-    }
-    
-    .service-features li i {
-      color: var(--primary);
-      margin-right: 10px;
-      font-size: 14px;
-    }
-    
-    .service-link {
-      display: inline-flex;
-      align-items: center;
-      color: var(--primary);
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    
-    .service-link i {
-      margin-left: 5px;
-      transition: transform 0.3s ease;
-    }
-    
-    .service-link:hover {
-      color: var(--secondary);
-    }
-    
-    .service-link:hover i {
-      transform: translateX(5px);
-    }
-    
-    /* Doctors Section */
-    .doctors {
-      padding: 100px 0;
-      background-color: white;
-    }
-    
-    .doctors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-    
-    .doctor-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-    
-    .doctor-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .doctor-img {
-      height: 250px;
-      overflow: hidden;
-    }
-    
-    .doctor-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .doctor-card:hover .doctor-img img {
-      transform: scale(1.05);
-    }
-    
-    .doctor-info {
-      padding: 20px;
-    }
-    
-    .doctor-info h3 {
-      font-size: 20px;
-      margin-bottom: 5px;
-      color: var(--dark);
-    }
-    
-    .doctor-info p {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 14px;
-    }
-    
-    .doctor-social {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 15px;
-    }
-    
-    .doctor-social a {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background: var(--light-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--dark);
-      transition: all 0.3s ease;
-    }
-    
-    .doctor-social a:hover {
-      background: var(--primary);
-      color: white;
-    }
-    
-    /* CTA Section */
-    .cta {
-      padding: 100px 0;
-      background: linear-gradient(135deg, rgba(116, 235, 213, 0.9), rgba(172, 182, 229, 0.9)), 
-                  url('https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-      color: white;
-      text-align: center;
-    }
-    
-    .cta h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-    
-    .cta p {
-      max-width: 700px;
-      margin: 0 auto 30px;
-      opacity: 0.9;
-    }
-    
-    /* About Section */
-    .about {
-      padding: 100px 0;
-      background-color: white;
-    }
-    
-    .about-content {
-      display: flex;
-      align-items: center;
-      gap: 50px;
-    }
-    
-    .about-img {
-      flex: 1;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .about-img img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    .about-text {
-      flex: 1;
-    }
-    
-    .about-text h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: var(--dark);
-    }
-    
-    .about-text p {
-      margin-bottom: 20px;
-      color: var(--gray);
-    }
-    
-    /* Footer */
-    footer {
-      background-color: #2c3e50;
-      color: white;
-      padding: 80px 0 30px;
-    }
-    
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
-      margin-bottom: 50px;
-    }
-    
-    .footer-column h3 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      position: relative;
-      padding-bottom: 10px;
-    }
-    
-    .footer-column h3::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 50px;
-      height: 2px;
-      background: var(--primary);
-    }
-    
-    .footer-column p {
-      opacity: 0.8;
-      margin-bottom: 20px;
-    }
-    
-    .footer-links li {
-      margin-bottom: 10px;
-      list-style: none;
-    }
-    
-    .footer-links a {
-      color: white;
-      opacity: 0.8;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    
-    .footer-links a:hover {
-      opacity: 1;
-      color: var(--primary);
-      padding-left: 5px;
-    }
-    
-    .footer-contact li {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 15px;
-      list-style: none;
-    }
-    
-    .footer-contact i {
-      margin-right: 10px;
-      color: var(--primary);
-    }
-    
-    .footer-social {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .footer-social a {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      transition: all 0.3s ease;
-    }
-    
-    .footer-social a:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-    }
-    
-    .footer-bottom {
-      text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .footer-bottom p {
-      opacity: 0.7;
-      font-size: 14px;
-    }
-    
-    /* Responsive Styles */
-    @media (max-width: 992px) {
-      .nav-links {
-        display: none;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareNest | Pediatrics & Gynecology</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      :root {
+        --primary: #4f8ef7;
+        --primary-light: rgba(79, 142, 247, 0.1);
+        --primary-dark: #3a7be0;
+        --secondary: #f76b6b;
+        --secondary-light: rgba(247, 107, 107, 0.1);
+        --secondary-dark: #e05a5a;
+        --dark: #2a2a2a;
+        --darker: #1a1a1a;
+        --light: #f8f9fa;
+        --lighter: #ffffff;
+        --gray: #6c757d;
+        --gray-light: #e9ecef;
+        --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+        --shadow-primary: 0 10px 30px rgba(79, 142, 247, 0.3);
+        --shadow-secondary: 0 10px 30px rgba(247, 107, 107, 0.3);
+        --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  
+  /* Responsive font sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  
+  @media (max-width: 768px) {
+    --space-xs: 0.25rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    
+    --text-xs: 0.7rem;
+    --text-sm: 0.8rem;
+    --text-base: 0.9rem;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+    --text-2xl: 1.25rem;
+    --text-3xl: 1.5rem;
+    --text-4xl: 1.75rem;
+    --text-5xl: 2rem;
+  }
+
       }
-      
-      .mobile-menu-btn {
-        display: block;
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
       }
-      
-      .hero h1 {
-        font-size: 40px;
+
+      body {
+        background-color: var(--lighter);
+        color: var(--dark);
+        overflow-x: hidden;
+        line-height: 1.6;
       }
-      
-      .about-content {
-        flex-direction: column;
+
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
       }
-    }
-    
-    @media (max-width: 768px) {
-      .hero {
-        min-height: 600px;
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 20px 0;
+        transition: var(--transition);
+        background-color: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       }
-      
-      .hero h1 {
+
+      header.scrolled {
+        padding: 12px 0;
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: var(--transition);
+      }
+
+      .logo i {
+        margin-right: 10px;
         font-size: 32px;
       }
-      
-      .hero-buttons {
-        flex-direction: column;
-        gap: 15px;
+
+      .logo span {
+        color: var(--secondary);
       }
-      
-      .hero-buttons .btn {
+
+      .logo:hover {
+        transform: translateY(-2px);
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-menu li {
+        margin-left: 30px;
+        position: relative;
+      }
+
+      .nav-menu a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        position: relative;
+        font-size: 16px;
+        padding: 8px 0;
+      }
+
+      .nav-menu a:hover {
+        color: var(--primary);
+      }
+
+      .nav-menu a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        bottom: 0;
+        left: 0;
+        transition: var(--transition);
+        border-radius: 3px;
+      }
+
+      .nav-menu a:hover:after {
         width: 100%;
       }
-      
-      .section-title h2 {
-        font-size: 28px;
+
+      .mobile-menu-btn {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--dark);
+        transition: var(--transition);
+        z-index: 1001;
       }
-    }
-    
-    @media (max-width: 576px) {
+
+      .mobile-menu-btn:hover {
+        color: var(--primary);
+        transform: rotate(90deg);
+      }
+
+      /* Hero Section */
       .hero {
-        padding-top: 100px;
+        height: 100vh;
+        min-height: 800px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+            135deg,
+            rgba(79, 142, 247, 0.1) 0%,
+            rgba(255, 255, 255, 0.9) 70%
+          ),
+          url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")
+            no-repeat center center/cover;
       }
-      
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 20% 50%,
+          rgba(79, 142, 247, 0.15) 0%,
+          transparent 40%
+        );
+        pointer-events: none;
+      }
+
       .hero-content {
+        max-width: 650px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-subtitle {
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 20px;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        position: relative;
+        padding-left: 60px;
+      }
+
+      .hero-subtitle::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 50px;
+        height: 2px;
+        background: var(--primary);
+      }
+
+      .hero-title {
+        font-size: 60px;
+        font-weight: 800;
+        margin-bottom: 25px;
+        line-height: 1.2;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 4px 15px rgba(79, 142, 247, 0.15);
+      }
+
+      .hero-title span {
+        display: inline-block;
+        animation: pulse 2s infinite;
+      }
+
+      .hero-text {
+        color: var(--gray);
+        margin-bottom: 40px;
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        font-size: 16px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .btn i {
+        margin-left: 8px;
+        transition: var(--transition);
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+        box-shadow: var(--shadow-primary);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(79, 142, 247, 0.4);
+      }
+
+      .btn-primary:hover i {
+        transform: translateX(5px);
+      }
+
+      .btn-secondary {
+        background-color: var(--secondary);
+        color: white;
+        box-shadow: var(--shadow-secondary);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--secondary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(247, 107, 107, 0.4);
+      }
+
+      .btn-secondary:hover i {
+        transform: translateX(5px);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+        margin-left: 15px;
+      }
+
+      .btn-outline:hover {
+        background: var(--primary);
+        color: white;
+      }
+
+      /* Floating elements animation */
+      .floating {
+        animation: floating 6s ease-in-out infinite;
+      }
+
+      .floating-2 {
+        animation: floating 5s ease-in-out infinite 1s;
+      }
+
+      .floating-3 {
+        animation: floating 7s ease-in-out infinite 0.5s;
+      }
+
+      /* Specialties Section */
+      .specialties {
+        padding: 120px 0;
+        background-color: var(--light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .specialties::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          var(--primary-light) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      .specialties::after {
+        content: "";
+        position: absolute;
+        bottom: -300px;
+        left: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          var(--secondary-light) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      .section-title {
         text-align: center;
+        margin-bottom: 80px;
+        position: relative;
+        z-index: 1;
       }
-      
-      .service-card, .doctor-card {
-        max-width: 100%;
+
+      .section-title h2 {
+        font-size: 42px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: var(--darker);
       }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header id="header">
-    <div class="container">
-      <nav>
-        <div class="logo">
-          <!-- <img src="https://via.placeholder.com/40x40" alt="CareNest Logo"> -->
-          <a href="#" class="logo-text">Care<span>Nest</span></a>
-        </div>
-        
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a></li>
-          <li><a href="#doctors" class="nav-link">Doctors</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        
-        <div class="nav-buttons">
-          <a href="#" class="btn btn-outline">Login</a>
-          <a href="booking.html" class="btn btn-primary">Book Appointment</a>
-        </div>
-        
-        <button class="mobile-menu-btn">
+
+      .section-title p {
+        color: var(--gray);
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 18px;
+      }
+
+      .specialty-tabs {
+        display: inline-flex;
+        justify-content: center;
+        margin-bottom: 50px;
+        background: white;
+        border-radius: 50px;
+        padding: 8px;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+        z-index: 1;
+      }
+
+      .tab-btn {
+        padding: 14px 40px;
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        color: var(--gray);
+        transition: var(--transition);
+        border-radius: 50px;
+        z-index: 1;
+      }
+
+      .tab-btn.active {
+        color: white;
+      }
+
+      .tab-indicator {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        height: calc(100% - 16px);
+        border-radius: 50px;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        transition: var(--transition);
+        z-index: 0;
+      }
+
+      .tab-content {
+        display: none;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .specialty-content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 50px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .specialty-image {
+        flex: 1;
+        min-width: 350px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        transform: perspective(1000px) rotateY(-10deg);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .specialty-image:hover {
+        transform: perspective(1000px) rotateY(0deg);
+      }
+
+      .specialty-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: var(--transition);
+      }
+
+      .specialty-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .specialty-details {
+        flex: 1;
+        min-width: 350px;
+      }
+
+      .specialty-details h3 {
+        font-size: 36px;
+        margin-bottom: 25px;
+        color: var(--darker);
+        font-weight: 700;
+      }
+
+      .specialty-details p {
+        color: var(--gray);
+        margin-bottom: 25px;
+        line-height: 1.8;
+        font-size: 17px;
+      }
+
+      .specialty-services {
+        margin-bottom: 40px;
+      }
+
+      .service-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 12px;
+        transition: var(--transition);
+        background: white;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .service-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        color: white;
+        font-size: 20px;
+        flex-shrink: 0;
+        box-shadow: 0 5px 15px rgba(79, 142, 247, 0.3);
+      }
+
+      .service-text h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: var(--darker);
+      }
+
+      .service-text p {
+        margin: 0;
+        color: var(--gray);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      /* Doctors Section */
+      .doctors {
+        padding: 120px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .doctors::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          var(--primary-light) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      .doctors-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .doctor-card {
+        background-color: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        width: 100%;
+        max-width: 380px;
+        transition: var(--transition);
+        transform: translateY(50px);
+        opacity: 0;
+      }
+
+      .doctor-card.animate {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .doctor-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .doctor-image {
+        height: 350px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .doctor-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+        z-index: 1;
+      }
+
+      .doctor-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .doctor-card:hover .doctor-image img {
+        transform: scale(1.1);
+      }
+
+      .doctor-info {
+        padding: 30px;
+        text-align: center;
+        position: relative;
+      }
+
+      .doctor-info h3 {
+        font-size: 24px;
+        margin-bottom: 8px;
+        color: var(--darker);
+      }
+
+      .doctor-info p.specialty {
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+
+      .doctor-bio {
+        color: var(--gray);
+        margin-bottom: 20px;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .doctor-details {
+        list-style-type: none;
+        padding: 0;
+        margin: 0 0 25px;
+        text-align: left;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--gray);
+      }
+
+      .doctor-details li {
+        padding-left: 25px;
+        position: relative;
+        margin-bottom: 12px;
+      }
+
+      .doctor-details li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      /* Appointment Section */
+      .appointment {
+        padding: 120px 0;
+        background-color: var(--light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .appointment::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          var(--secondary-light) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      .appointment-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .appointment-info {
+        flex: 1;
+        min-width: 350px;
+      }
+
+      .appointment-info h2 {
+        font-size: 42px;
+        margin-bottom: 25px;
+        color: var(--darker);
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      .appointment-info p {
+        color: var(--gray);
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-size: 17px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        border-radius: 15px;
+        background: white;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+      }
+
+      .info-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .info-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        color: white;
+        font-size: 24px;
+        flex-shrink: 0;
+        box-shadow: 0 5px 15px rgba(79, 142, 247, 0.3);
+      }
+
+      .info-text h4 {
+        font-size: 20px;
+        margin-bottom: 8px;
+        color: var(--darker);
+      }
+
+      .info-text p {
+        margin: 0;
+        color: var(--gray);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .appointment-form {
+        flex: 1;
+        min-width: 350px;
+        background-color: white;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: var(--shadow-lg);
+        transform: perspective(1000px) rotateY(10deg);
+        transition: var(--transition);
+      }
+
+      .appointment-form:hover {
+        transform: perspective(1000px) rotateY(0deg);
+      }
+
+      .form-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--darker);
+        font-weight: 700;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--darker);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px 20px;
+        border: 1px solid var(--gray-light);
+        border-radius: 12px;
+        font-size: 16px;
+        transition: var(--transition);
+        background: var(--light);
+      }
+
+      .form-control:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(79, 142, 247, 0.2);
+        background: white;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 20px;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 18px;
+        font-size: 17px;
+        font-weight: 600;
+        border-radius: 12px;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .submit-btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .submit-btn:hover::after {
+        left: 100%;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, var(--darker), var(--dark));
+        color: white;
+        padding: 100px 0 30px;
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+      }
+
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .footer-col {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .footer-col h3 {
+        font-size: 22px;
+        margin-bottom: 30px;
+        position: relative;
+        padding-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .footer-col h3:after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        bottom: 0;
+        left: 0;
+        border-radius: 3px;
+      }
+
+      .footer-col p {
+        color: #aaa;
+        margin-bottom: 25px;
+        line-height: 1.8;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 15px;
+      }
+
+      .footer-links a {
+        color: #aaa;
+        text-decoration: none;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-links a i {
+        margin-right: 10px;
+        color: var(--primary);
+        font-size: 14px;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: white;
+        transform: translateX(5px);
+      }
+
+      .footer-links a:hover i {
+        color: var(--secondary);
+      }
+
+      .footer-contact li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        color: #aaa;
+      }
+
+      .footer-contact i {
+        margin-right: 15px;
+        color: var(--primary);
+        font-size: 18px;
+        margin-top: 3px;
+      }
+
+      .social-links-footer {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .social-links-footer a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .social-links-footer a:hover {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #777;
+        font-size: 14px;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        box-shadow: var(--shadow-md);
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 999;
+      }
+
+      .back-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Animations */
+      @keyframes floating {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Particles animation */
+      .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .particle {
+        position: absolute;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: float infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.3;
+        }
+        100% {
+          transform: translateY(-1000px) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      .highlight-text {
+        color: #fff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        display: inline-block;
+        padding: 0 10px;
+        background: linear-gradient(45deg, var(--secondary), var(--primary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: pulse 2s infinite;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 1200px) {
+        .hero-title {
+          font-size: 50px;
+        }
+
+        .specialty-image {
+          transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .appointment-form {
+          transform: perspective(1000px) rotateY(0deg);
+        }
+      }
+
+      @media (max-width: 992px) {
+        .hero-title {
+          font-size: 42px;
+        }
+
+        .section-title h2 {
+          font-size: 36px;
+        }
+
+        .specialty-content {
+          flex-direction: column;
+        }
+
+        .specialty-image,
+        .specialty-details {
+          flex: none;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 80%;
+          max-width: 350px;
+          height: 100vh;
+          background-color: white;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 100px 40px 40px;
+          transition: var(--transition);
+          box-shadow: var(--shadow-lg);
+          z-index: 1000;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-menu li {
+          margin: 15px 0;
+        }
+
+        .nav-menu a {
+          font-size: 18px;
+          padding: 10px 0;
+        }
+
+        .hero {
+          min-height: 700px;
+        }
+
+        .hero-title {
+          font-size: 36px;
+        }
+
+        .hero-text {
+          font-size: 16px;
+        }
+
+        .section-title h2 {
+          font-size: 32px;
+        }
+
+        .tab-btn {
+          padding: 12px 25px;
+          font-size: 15px;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .footer-container {
+          gap: 30px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .container {
+          padding: 0 20px;
+        }
+
+        .hero-title {
+          font-size: 32px;
+        }
+
+        .hero-subtitle {
+          font-size: 12px;
+          padding-left: 40px;
+        }
+
+        .hero-subtitle::before {
+          width: 30px;
+        }
+
+        .btn {
+          padding: 14px 30px;
+          font-size: 15px;
+        }
+
+        .section-title h2 {
+          font-size: 28px;
+        }
+
+        .specialty-details h3 {
+          font-size: 28px;
+        }
+
+        .appointment-info h2 {
+          font-size: 32px;
+        }
+
+        .appointment-form {
+          padding: 30px;
+        }
+
+        .form-title {
+          font-size: 24px;
+        }
+      }
+
+      /* Responsive adjustments for appointment section */
+      @media (max-width: 768px) {
+        .appointment-container {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .appointment-info,
+        .appointment-form {
+          min-width: 100%;
+        }
+
+        .appointment-info h2 {
+          font-size: 32px;
+        }
+
+        .info-item {
+          padding: 15px;
+          margin-bottom: 20px;
+        }
+
+        .info-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
+          margin-right: 15px;
+        }
+
+        .appointment-form {
+          padding: 30px;
+        }
+
+        .form-title {
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+
+        .form-control {
+          padding: 12px 15px;
+        }
+      }
+
+      /* Responsive adjustments for footer */
+      @media (max-width: 768px) {
+        .footer-container {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .footer-col {
+          min-width: 100%;
+        }
+
+        .footer-col h3 {
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+
+        .footer-links li,
+        .footer-contact li {
+          margin-bottom: 12px;
+        }
+
+        .footer-bottom {
+          padding-top: 20px;
+        }
+
+        .social-links-footer {
+          justify-content: flex-start;
+        }
+      }
+
+      /* Smaller mobile adjustments */
+      @media (max-width: 480px) {
+        .appointment-info h2 {
+          font-size: 28px;
+        }
+
+        .info-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .info-icon {
+          margin-bottom: 10px;
+          margin-right: 0;
+        }
+
+        .appointment-form {
+          padding: 20px;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .footer-contact li {
+          flex-direction: column;
+        }
+
+        .footer-contact i {
+          margin-bottom: 5px;
+        }
+      }
+
+      /* Style for input with icons */
+      .input-with-icon {
+        position: relative;
+      }
+
+      .input-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary);
+        cursor: pointer;
+        pointer-events: none; /* Allows click to pass through to input */
+      }
+
+
+      /* Extra Small Devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .logo i {
+    font-size: 1.8rem;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.3;
+  }
+  
+  .hero-text {
+    font-size: 1rem;
+  }
+  
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+  
+  .specialty-details h3 {
+    font-size: 1.5rem;
+  }
+  
+  .service-item {
+    padding: 15px;
+  }
+  
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    margin-right: 15px;
+  }
+  
+  .doctor-image {
+    height: 250px;
+  }
+  
+  .appointment-form {
+    padding: 20px;
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .info-item {
+    padding: 15px;
+  }
+  
+  .info-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    margin-right: 15px;
+  }
+}
+
+/* Small Devices (portrait tablets and large phones, 600px - 768px) */
+@media (min-width: 600px) and (max-width: 768px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .section-title h2 {
+    font-size: 2rem;
+  }
+  
+  .specialty-details h3 {
+    font-size: 1.8rem;
+  }
+  
+  .doctor-card {
+    max-width: 100%;
+  }
+  
+  .appointment-info h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Medium Devices (landscape tablets, 768px - 992px) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .specialty-content {
+    gap: 30px;
+  }
+  
+  .doctor-card {
+    max-width: calc(50% - 20px);
+  }
+}
+
+/* Orientation Adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding: 80px 0;
+  }
+  
+  .hero-content {
+    padding-top: 60px;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .hero-text {
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+  }
+}
+
+/* High Resolution Displays */
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+  /* Adjustments for retina displays */
+  .logo, .nav-menu a, .btn, .section-title h2 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Print Styles */
+@media print {
+  header, footer, .mobile-menu-btn, .back-to-top {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+  
+  a::after {
+    content: " (" attr(href) ") ";
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+}
+
+      /* Hide the default calendar icon in some browsers */
+      input[type="date"]::-webkit-calendar-picker-indicator,
+      input[type="time"]::-webkit-calendar-picker-indicator {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      /* Make the input clickable area cover the icon */
+      input[type="date"],
+      input[type="time"] {
+        padding-right: 40px; /* Space for icon */
+        width: 100%;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header id="header">
+      <div class="container header-container">
+        <a href="#" class="logo floating"
+          ><i class="fas fa-heartbeat"></i>Care<span>Nest</span></a
+        >
+        <div class="mobile-menu-btn">
           <i class="fas fa-bars"></i>
-        </button>
-      </nav>
-    </div>
-  </header>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#specialties">Specialties</a></li>
+          <li><a href="#doctors">Our Doctors</a></li>
+          <li><a href="#appointment">Appointment</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Compassionate Healthcare for Women & Children</h1>
-        <p>At CareNest, we provide specialized medical care with a personal touch. Our expert team is dedicated to your family's health and wellbeing.</p>
-        <div class="hero-buttons">
-          <a href="booking.html" class="btn btn-primary">Book Appointment</a>
-          <a href="#services" class="btn btn-white">Our Services</a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content animate__animated animate__fadeInUp">
+          <span class="hero-subtitle animate__animated animate__fadeInLeft"
+            >Welcome to Carenest</span
+          >
+          <h1 class="hero-title animate__animated animate__fadeInUp">
+            Expert Care for <span class="highlight-text">Your Family</span>
+          </h1>
+          <p
+            class="hero-text animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            Compassionate healthcare for women and children. Our doctors provide
+            specialized care in gynecology and pediatrics under one roof.
+          </p>
+          <div class="animate__animated animate__fadeInUp animate__delay-1s">
+            <a href="#appointment" class="btn btn-primary"
+              >Book Appointment <i class="fas fa-calendar-check"></i
+            ></a>
+            <a href="#specialties" class="btn btn-outline"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Features Section -->
-  <section class="features">
-    <div class="container">
-      <div class="section-title">
-        <h2>Why Choose CareNest?</h2>
-        <p>We are committed to providing exceptional healthcare services with a focus on women and children's health.</p>
-      </div>
-      
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-user-md"></i>
-          </div>
-          <h3>Expert Doctors</h3>
-          <p>Our board-certified specialists have years of experience in pediatric and women's health.</p>
+    <!-- Specialties Section -->
+    <section class="specialties" id="specialties">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Specialties</h2>
+          <p>
+            We provide comprehensive care in both pediatric and gynecological
+            services tailored to meet your family's needs.
+          </p>
         </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-heartbeat"></i>
-          </div>
-          <h3>Advanced Technology</h3>
-          <p>State-of-the-art equipment for accurate diagnosis and effective treatment.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-hand-holding-heart"></i>
-          </div>
-          <h3>Compassionate Care</h3>
-          <p>We treat every patient with empathy, respect, and personalized attention.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-clock"></i>
-          </div>
-          <h3>Flexible Hours</h3>
-          <p>Extended hours and weekend appointments to accommodate your busy schedule.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Services Section -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Specialized Services</h2>
-        <p>Comprehensive healthcare solutions tailored for women and children at every stage of life.</p>
-      </div>
-      
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-img">
-            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pediatrics">
+        <div class="specialty-tabs">
+          <div class="tab-indicator"></div>
+          <button class="tab-btn active" data-tab="pediatrics">
+            Pediatrics
+          </button>
+          <button class="tab-btn" data-tab="gynecology">Gynecology</button>
+        </div>
+
+        <div class="tab-content active" id="pediatrics">
+          <div class="specialty-content">
+            <div class="specialty-image animate__animated animate__fadeInLeft">
+              <img
+                src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1489&q=80"
+                alt="Pediatric Care"
+              />
+            </div>
+            <div
+              class="specialty-details animate__animated animate__fadeInRight"
+            >
+              <h3>Comprehensive Pediatric Care</h3>
+              <p>
+                We provide compassionate, family-centered care for infants,
+                children and adolescents. Our pediatric services focus on
+                preventive care, early intervention, and treatment of childhood
+                illnesses.
+              </p>
+
+              <div class="specialty-services">
+                <div class="service-item">
+                  <div class="service-icon">
+                    <i class="fas fa-baby"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Well-Baby Visits</h4>
+                    <p>Regular checkups to monitor growth and development</p>
+                  </div>
+                </div>
+                <div class="service-item">
+                  <div class="service-icon">
+                    <i class="fas fa-syringe"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Immunizations</h4>
+                    <p>Complete vaccination schedule for disease prevention</p>
+                  </div>
+                </div>
+                <div class="service-item">
+                  <div class="service-icon">
+                    <i class="fas fa-stethoscope"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Sick Visits</h4>
+                    <p>Diagnosis and treatment of childhood illnesses</p>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#appointment" class="btn btn-primary"
+                >Book Pediatric Appointment <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
           </div>
-          <div class="service-content">
-            <h3>Pediatric Care</h3>
-            <p>Comprehensive healthcare for your child from infancy through adolescence.</p>
-            
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Well-child visits and immunizations</li>
-              <li><i class="fas fa-check"></i> Developmental screenings</li>
-              <li><i class="fas fa-check"></i> Treatment of childhood illnesses</li>
-              <li><i class="fas fa-check"></i> Nutritional counseling</li>
+        </div>
+
+        <div class="tab-content" id="gynecology">
+          <div class="specialty-content">
+            <div class="specialty-image">
+              <img
+                src="https://images.unsplash.com/photo-1578496781985-452d4a934d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Gynecological Care"
+              />
+            </div>
+            <div class="specialty-details">
+              <h3>Comprehensive Gynecological Care</h3>
+              <p>
+                We provide compassionate, personalized care for women at all
+                stages of life. Our gynecological services focus on preventive
+                care, reproductive health, and treatment of women's health
+                conditions.
+              </p>
+
+              <div class="specialty-services">
+                <div class="service-item">
+                  <div class="service-icon">
+                    <i class="fas fa-calendar-check"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Annual Exams</h4>
+                    <p>
+                      Comprehensive women's health screenings and preventive
+                      care
+                    </p>
+                  </div>
+                </div>
+                <div class="service-item">
+                  <div class="service-icon">
+                    <i class="fas fa-baby-carriage"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Prenatal Care</h4>
+                    <p>Personalized care throughout your pregnancy journey</p>
+                  </div>
+                </div>
+                <div class="service-item">
+                  <div class="service-icon">
+                    <i class="fas fa-procedures"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Minimally Invasive Procedures</h4>
+                    <p>Advanced treatment options with faster recovery</p>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#appointment" class="btn btn-secondary"
+                >Book Gynecology Appointment <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors" id="doctors">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Doctors</h2>
+          <p>
+            Meet our dedicated doctors providing compassionate care for your
+            family.
+          </p>
+        </div>
+
+        <div class="doctors-container">
+          <!-- Doctor 1 -->
+          <div class="doctor-card">
+            <div class="doctor-image">
+              <img
+                src="https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"
+                alt="Dr. Abhishek"
+              />
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Abhishek</h3>
+              <p class="specialty">Pediatrician</p>
+              <p class="doctor-bio">
+                Board-certified pediatrician with 15 years of experience caring
+                for children from birth through adolescence.
+              </p>
+              <ul class="doctor-details">
+                <li>
+                  <strong>Education:</strong> MBBS, MD (Pediatrics) - AIIMS, New
+                  Delhi
+                </li>
+                <li>
+                  <strong>Certifications:</strong> American Board of Pediatrics
+                </li>
+                <li>
+                  <strong>Special Interests:</strong> Child development,
+                  vaccination protocols, pediatric emergencies
+                </li>
+                <li>
+                  <strong>Achievements:</strong> Published 12 research papers on
+                  childhood asthma; Guest speaker at the National Pediatric
+                  Conference 2023
+                </li>
+              </ul>
+              <!-- <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+              </div> -->
+              <a href="#appointment" class="btn btn-primary"
+                >Book Appointment <i class="fas fa-calendar-alt"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Doctor 2 -->
+          <div class="doctor-card">
+            <div class="doctor-image">
+              <img
+                src="https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg"
+                alt="Dr. Sarah Smith"
+              />
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Sarah Smith</h3>
+              <p class="specialty">Gynecologist</p>
+              <p class="doctor-bio">
+                Board-certified OB/GYN specializing in women's health, prenatal
+                care, and minimally invasive procedures.
+              </p>
+              <ul class="doctor-details">
+                <li>
+                  <strong>Education:</strong> MBBS, MS (Obstetrics & Gynecology)
+                  - KEM Hospital, Mumbai
+                </li>
+                <li>
+                  <strong>Certifications:</strong> Fellowship in Laparoscopic
+                  Surgery
+                </li>
+                <li>
+                  <strong>Special Interests:</strong> High-risk pregnancies,
+                  menstrual disorders, laparoscopic hysterectomy
+                </li>
+                <li>
+                  <strong>Achievements:</strong> Honored as "Top Gynecologist of
+                  the Year" by Women's Health India, 2022
+                </li>
+              </ul>
+              <!-- <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+              </div> -->
+              <a href="#appointment" class="btn btn-primary"
+                >Book Appointment <i class="fas fa-calendar-alt"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section class="appointment" id="appointment">
+      <div class="container">
+        <div class="section-title">
+          <h2>Book an Appointment</h2>
+          <p>
+            Schedule your visit with our specialists. Select the appropriate
+            service below.
+          </p>
+        </div>
+
+        <div class="appointment-container">
+          <div class="appointment-info animate__animated animate__fadeInLeft">
+            <h2>We're Here to Help</h2>
+            <p>
+              Our friendly staff is ready to assist you with scheduling
+              appointments, answering questions, and providing the care you
+              need.
+            </p>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="info-text">
+                <h4>Call Us</h4>
+                <p>+1 (555) 123-4567</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-text">
+                <h4>Email Us</h4>
+                <p>info@drsmithpractice.com</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-text">
+                <h4>Our Location</h4>
+                <p>
+                  123 Medical Center Drive, Suite 200<br />Anytown, ST 12345
+                </p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="info-text">
+                <h4>Office Hours</h4>
+                <p>
+                  Monday - Friday: 8:00 AM - 5:00 PM<br />Saturday: 9:00 AM -
+                  1:00 PM
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="appointment-form animate__animated animate__fadeInRight">
+            <h3 class="form-title">Request Appointment</h3>
+            <form id="bookingForm">
+              <div class="form-group">
+                <label for="service">Service Needed</label>
+                <select class="form-control" id="service" required>
+                  <option value="">Select Service</option>
+                  <option value="pediatrics">Pediatrics</option>
+                  <option value="gynecology">Gynecology</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" class="form-control" id="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+
+              <!-- Updated Date Input with Calendar Icon -->
+              <div class="form-group">
+                <label for="date">Preferred Date</label>
+                <div class="input-with-icon">
+                  <input type="date" class="form-control" id="date" required />
+                  <i
+                    class="fas fa-calendar-alt input-icon"
+                    onclick="document.getElementById('date').click()"
+                  ></i>
+                </div>
+              </div>
+
+              <!-- Updated Time Input with Clock Icon -->
+              <div class="form-group">
+                <label for="time">Preferred Time</label>
+                <div class="input-with-icon">
+                  <input type="time" class="form-control" id="time" required />
+                  <i
+                    class="fas fa-clock input-icon"
+                    onclick="document.getElementById('time').click()"
+                  ></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Additional Information</label>
+                <textarea class="form-control" id="message" rows="3"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary submit-btn">
+                Book Appointment <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-col">
+            <h3>About Us</h3>
+            <p>
+              CareNest is a premier healthcare provider specializing in women
+              and children's health services. Founded in 2010, we have been
+              serving our community with compassion and excellence for over a
+              decade.
+            </p>
+            <div class="social-links-footer">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home"><i class="fas fa-chevron-right"></i> Home</a>
+              </li>
+              <li>
+                <a href="#specialties"
+                  ><i class="fas fa-chevron-right"></i> Our Specialties</a
+                >
+              </li>
+              <li>
+                <a href="#doctors"
+                  ><i class="fas fa-chevron-right"></i> Our Doctors</a
+                >
+              </li>
+              <li>
+                <a href="#appointment"
+                  ><i class="fas fa-chevron-right"></i> Appointments</a
+                >
+              </li>
+              <li>
+                <a href="#contact"
+                  ><i class="fas fa-chevron-right"></i> Contact Us</a
+                >
+              </li>
             </ul>
-            
-            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-img">
-            <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gynecology">
-          </div>
-          <div class="service-content">
-            <h3>Women's Health</h3>
-            <p>Expert care for women at all stages of life with compassion and understanding.</p>
-            
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Annual exams and screenings</li>
-              <li><i class="fas fa-check"></i> Prenatal and pregnancy care</li>
-              <li><i class="fas fa-check"></i> PCOS and hormonal treatments</li>
-              <li><i class="fas fa-check"></i> Menopause management</li>
+
+          <div class="footer-col">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#pediatrics"
+                  ><i class="fas fa-chevron-right"></i> Pediatric Care</a
+                >
+              </li>
+              <li>
+                <a href="#gynecology"
+                  ><i class="fas fa-chevron-right"></i> Gynecological Care</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right"></i> Wellness Exams</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right"></i> Immunizations</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right"></i> Prenatal Care</a
+                >
+              </li>
             </ul>
-            
-            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-img">
-            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vaccination">
-          </div>
-          <div class="service-content">
-            <h3>Immunization</h3>
-            <p>Complete vaccination services for children and adults following CDC guidelines.</p>
-            
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Routine childhood vaccines</li>
-              <li><i class="fas fa-check"></i> Travel vaccinations</li>
-              <li><i class="fas fa-check"></i> Flu shots and boosters</li>
-              <li><i class="fas fa-check"></i> Vaccine counseling</li>
+
+          <div class="footer-col">
+            <h3>Contact Info</h3>
+            <ul class="footer-contact">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >123 Medical Center Drive, Suite 200<br />Anytown, ST
+                  12345</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+1 (555) 123-4567</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>info@drsmithpractice.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span
+                  >Mon-Fri: 8:00 AM - 5:00 PM<br />Sat: 9:00 AM - 1:00 PM</span
+                >
+              </li>
             </ul>
-            
-            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Doctors Section -->
-  <section class="doctors" id="doctors">
-    <div class="container">
-      <div class="section-title">
-        <h2>Meet Our Specialists</h2>
-        <p>Our team of experienced healthcare professionals is dedicated to providing exceptional care.</p>
-      </div>
-      
-      <div class="doctors-grid">
-        <div class="doctor-card">
-          <div class="doctor-img">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dr. Amanda Smith">
-          </div>
-          <div class="doctor-info">
-            <h3>Dr. Amanda Smith</h3>
-            <p>Pediatrician</p>
-            <div class="doctor-social">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="doctor-card">
-          <div class="doctor-img">
-            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dr. Kevin Lee">
-          </div>
-          <div class="doctor-info">
-            <h3>Dr. Kevin Lee</h3>
-            <p>Pediatric Specialist</p>
-            <div class="doctor-social">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="doctor-card">
-          <div class="doctor-img">
-            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dr. Priya Mehta">
-          </div>
-          <div class="doctor-info">
-            <h3>Dr. Priya Mehta</h3>
-            <p>OB-GYN Specialist</p>
-            <div class="doctor-social">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="doctor-card">
-          <div class="doctor-img">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dr. Sara Ahmed">
-          </div>
-          <div class="doctor-info">
-            <h3>Dr. Sara Ahmed</h3>
-            <p>Women's Health</p>
-            <div class="doctor-social">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-          </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 CareNest Pediatrics & Gynecology. All Rights Reserved.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- About Section -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-content">
-        <div class="about-img">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="About CareNest">
-        </div>
-        <div class="about-text">
-          <h2>About CareNest Clinic</h2>
-          <p>CareNest is a premier healthcare provider specializing in women and children's health services. Founded in 2010, we have been serving our community with compassion and excellence for over a decade.</p>
-          <p>Our team of board-certified physicians and healthcare professionals are dedicated to providing personalized, evidence-based care in a warm and welcoming environment.</p>
-          <p>We believe in treating the whole person, not just the symptoms, and we work closely with our patients to develop comprehensive care plans tailored to their unique needs.</p>
-          <a href="#" class="btn btn-primary">Learn More About Us</a>
-        </div>
-      </div>
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
     </div>
-  </section>
 
-  <!-- CTA Section -->
-  <section class="cta">
-    <div class="container">
-      <h2>Ready to Schedule Your Appointment?</h2>
-      <p>Our team is here to provide you with exceptional healthcare services tailored to your needs.</p>
-      <a href="booking.html" class="btn btn-primary">Book Now</a>
-    </div>
-  </section>
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const navMenu = document.querySelector(".nav-menu");
 
-  <!-- Footer -->
-  <footer id="contact">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>About CareNest</h3>
-          <p>CareNest is a specialized healthcare provider focusing on women and children's health with compassion and expertise.</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#doctors">Doctors</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Services</h3>
-          <ul class="footer-links">
-            <li><a href="#">Pediatric Care</a></li>
-            <li><a href="#">Women's Health</a></li>
-            <li><a href="#">Immunization</a></li>
-            <li><a href="#">Nutrition Counseling</a></li>
-            <li><a href="#">Wellness Exams</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Contact Us</h3>
-          <ul class="footer-contact">
-            <li>
-              <i class="fas fa-map-marker-alt"></i>
-              <span>123 Healthcare Ave, Medical City, MC 12345</span>
-            </li>
-            <li>
-              <i class="fas fa-phone-alt"></i>
-              <span>(123) 456-7890</span>
-            </li>
-            <li>
-              <i class="fas fa-envelope"></i>
-              <span>info@carenest.com</span>
-            </li>
-            <li>
-              <i class="fas fa-clock"></i>
-              <span>Mon-Fri: 8:00 AM - 7:00 PM<br>Sat: 9:00 AM - 3:00 PM</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>&copy; 2025 CareNest Clinic. All Rights Reserved.</p>
-      </div>
-    </div>
-  </footer>
+      mobileMenuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        mobileMenuBtn.innerHTML = navMenu.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
 
-  <script>
-    // Header scroll effect
-    window.addEventListener('scroll', function() {
-      const header = document.getElementById('header');
-      if (window.scrollY > 100) {
-        header.classList.add('header-scrolled');
-      } else {
-        header.classList.remove('header-scrolled');
-      }
-      
-      // Update active nav link
-      updateActiveNavLink();
-    });
-    
-    // Mobile menu toggle (would need more JavaScript for full functionality)
-    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-      // This would toggle a mobile menu in a real implementation
-      console.log('Mobile menu clicked');
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
         });
       });
-    });
-    
-    // Function to update active nav link
-    function updateActiveNavLink() {
-      const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('.nav-link');
-      
-      let currentSection = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.scrollY >= sectionTop - 200) {
-          currentSection = section.getAttribute('id');
-        }
+
+      // Sticky Header
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        header.classList.toggle("scrolled", window.scrollY > 50);
+
+        // Back to top button
+        const backToTop = document.querySelector(".back-to-top");
+        backToTop.classList.toggle("active", window.scrollY > 300);
       });
-      
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-          link.classList.add('active');
-        }
+
+      // Back to top button click
+      document.querySelector(".back-to-top").addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
       });
-    }
-    
-    // Initialize active nav link
-    updateActiveNavLink();
-  </script>
-</body>
+
+
+// Detect touch device
+function isTouchDevice() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints;
+}
+
+// Add touch-specific classes
+if (isTouchDevice()) {
+  document.body.classList.add('touch-device');
+} else {
+  document.body.classList.add('no-touch-device');
+}
+
+// Handle window resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+  document.body.classList.add('resize-animation-stopper');
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    document.body.classList.remove('resize-animation-stopper');
+  }, 400);
+});
+
+// Adjust animations for mobile
+if (window.innerWidth < 768) {
+  // Disable some animations on mobile
+  const animatedElements = document.querySelectorAll('.animate__animated');
+  animatedElements.forEach(el => {
+    el.classList.remove('animate__animated');
+  });
+  
+  // Simplify particle effects
+  const particles = document.getElementById('particles');
+  if (particles) particles.style.display = 'none';
+}
+
+// Dynamic viewport height for mobile
+function setViewportHeight() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', setViewportHeight);
+setViewportHeight();
+
+// Use this in your CSS for mobile height:
+// height: calc(var(--vh, 1vh) * 100);
+
+      // Specialty Tabs
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+      const tabIndicator = document.querySelector(".tab-indicator");
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Remove active class from all buttons and contents
+          tabBtns.forEach((btn) => btn.classList.remove("active"));
+          tabContents.forEach((content) => content.classList.remove("active"));
+
+          // Add active class to clicked button and corresponding content
+          btn.classList.add("active");
+          const tabId = btn.getAttribute("data-tab");
+          document.getElementById(tabId).classList.add("active");
+
+          // Move the indicator
+          const btnPosition = btn.getBoundingClientRect();
+          const containerPosition = btn.parentElement.getBoundingClientRect();
+          const left = btnPosition.left - containerPosition.left;
+          const width = btnPosition.width;
+
+          tabIndicator.style.width = `${width}px`;
+          tabIndicator.style.left = `${left}px`;
+        });
+      });
+
+      // Initialize tab indicator position
+      const activeBtn = document.querySelector(".tab-btn.active");
+      if (activeBtn) {
+        const btnPosition = activeBtn.getBoundingClientRect();
+        const containerPosition =
+          activeBtn.parentElement.getBoundingClientRect();
+        const left = btnPosition.left - containerPosition.left;
+        const width = btnPosition.width;
+
+        tabIndicator.style.width = `${width}px`;
+        tabIndicator.style.left = `${left}px`;
+      }
+
+      // Form Submission
+      const bookingForm = document.getElementById("bookingForm");
+
+      bookingForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Get form values
+        const service = document.getElementById("service").value;
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const email = document.getElementById("email").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const message = document.getElementById("message").value;
+
+        // Here you would typically send this data to your server
+        console.log({
+          service,
+          name,
+          phone,
+          email,
+          date,
+          time,
+          message,
+        });
+        // Ensure date/time pickers open when clicking anywhere on the input
+        document
+          .querySelectorAll('input[type="date"], input[type="time"]')
+          .forEach((input) => {
+            input.addEventListener("click", function () {
+              this.showPicker();
+            });
+
+            // For mobile devices to ensure picker opens
+            input.addEventListener("focus", function () {
+              this.showPicker();
+            });
+          });
+        // Show success message with animation
+        const submitBtn = document.querySelector(".submit-btn");
+        submitBtn.innerHTML =
+          '<i class="fas fa-check"></i> Appointment Booked!';
+        submitBtn.style.backgroundColor = "#4BB543";
+
+        setTimeout(() => {
+          submitBtn.innerHTML =
+            'Book Appointment <i class="fas fa-paper-plane"></i>';
+          submitBtn.style.backgroundColor = "";
+        }, 3000);
+
+        // Reset form
+        bookingForm.reset();
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Animation on scroll for doctor cards
+      const doctorCards = document.querySelectorAll(".doctor-card");
+
+      const animateDoctorCards = () => {
+        doctorCards.forEach((card, index) => {
+          const cardPosition = card.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+
+          if (cardPosition < screenPosition) {
+            setTimeout(() => {
+              card.classList.add("animate");
+            }, index * 200);
+          }
+        });
+      };
+
+      // Initialize animation
+      window.addEventListener("load", animateDoctorCards);
+      window.addEventListener("scroll", animateDoctorCards);
+
+      // Create floating particles
+      function createParticles() {
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.classList.add("particle");
+
+          // Random size between 3px and 8px
+          const size = Math.random() * 5 + 3;
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+
+          // Random position
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = `${Math.random() * 100}%`;
+
+          // Random animation duration between 10s and 20s
+          const duration = Math.random() * 10 + 10;
+          particle.style.animationDuration = `${duration}s`;
+
+          // Random delay
+          particle.style.animationDelay = `${Math.random() * 5}s`;
+
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Initialize particles
+      createParticles();
+
+      // Add hover effect to service items
+      const serviceItems = document.querySelectorAll(".service-item");
+      serviceItems.forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          const icon = item.querySelector(".service-icon");
+          icon.style.transform = "rotate(15deg) scale(1.1)";
+        });
+
+        item.addEventListener("mouseleave", () => {
+          const icon = item.querySelector(".service-icon");
+          icon.style.transform = "";
+        });
+      });
+
+      // Add ripple effect to buttons
+      const buttons = document.querySelectorAll(".btn");
+      buttons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          const x = e.clientX - e.target.getBoundingClientRect().left;
+          const y = e.clientY - e.target.getBoundingClientRect().top;
+
+          const ripple = document.createElement("span");
+          ripple.classList.add("ripple");
+          ripple.style.left = `${x}px`;
+          ripple.style.top = `${y}px`;
+          this.appendChild(ripple);
+
+          setTimeout(() => {
+            ripple.remove();
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
 </html>
